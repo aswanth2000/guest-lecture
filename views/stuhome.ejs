@@ -109,54 +109,62 @@
     </div>
     <div class="container" style="margin-top: 5vw;">
         <p class="h3">Guest Lecture Details Management</p>
-        <hr>
-        <% if(!lec) {%>
-            <h2 class="text-center">
-                No Lectures Scheduled
-            </h2>
-            <% }else{ %>
-                <h2 class="text-center">
-                    Lectures:
-                </h2>
-                <% } %>
-                    <% for(var i=0;i<lec.length;i++){ %>
+        <% if(errmain) {%>
 
-                        <div class="card shadow-sm p-3 mb-5 bg-body rounded">
-                            <div class="row no-gutters">
-                                <div class="col-md-2">
-                                    <img src="https://mysominotes.files.wordpress.com/2017/07/powerpointlecture.jpg" class="card-img " alt="...">
-                                </div>
-                                <div class="col-md-10">
-                                    <div class="card-body">
-                                        <blockquote class="blockquote font-weight-bold">
-                                            <p class="mb-0">
-                                                <%= lec[i].L_Name %>
-                                            </p>
-                                            <footer class="blockquote-footer">
-                                                <%= new Date(lec[i].Slot.split(" ")[0]).toDateString()  %>
-                                                    <%= lec[i].Slot.split(" ")[1]%> -
-                                                        <%= lec[i].Slot.split(" ")[3]%> (Railway Timigs)
-                                            </footer>
-                                        </blockquote>
-                                        <p class="card-text">
-                                            <span> Topic: </span>
-                                            <%= lec[i].Topic %>
-                                        </p>
-                                        <p class="card-text">
-                                            <span> Detailss: </span>
-                                            <%= lec[i].Details %>
-                                        </p>
-                                        <p class="card-text">
-                                            <a href="/lecture/student-view/<%= lec[i].L_ID %>">
-                                                <button type="button" class="btn btn-info">Info</button>
+            <p style="color: red;">
+                <%= errmain %>
+            </p>
 
-                                            </a>
-                                        </p>
+
+            <% }%>
+                <hr>
+                <% if(!lec) {%>
+                    <h2 class="text-center">
+                        No Lectures Scheduled
+                    </h2>
+                    <% }else{ %>
+                        <h2 class="text-center">
+                            Lectures:
+                        </h2>
+                        <% } %>
+                            <% for(var i=0;i<lec.length;i++){ %>
+
+                                <div class="card shadow-sm p-3 mb-5 bg-body rounded">
+                                    <div class="row no-gutters">
+                                        <div class="col-md-2">
+                                            <img src="https://mysominotes.files.wordpress.com/2017/07/powerpointlecture.jpg" class="card-img " alt="...">
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="card-body">
+                                                <blockquote class="blockquote font-weight-bold">
+                                                    <p class="mb-0">
+                                                        <%= lec[i].L_Name %>
+                                                    </p>
+                                                    <footer class="blockquote-footer">
+                                                        <%= new Date(lec[i].Slot.split(" ")[0]).toDateString()  %>
+                                                            <%= lec[i].Slot.split(" ")[1]%> -
+                                                                <%= lec[i].Slot.split(" ")[3]%> (Railway Timigs)
+                                                    </footer>
+                                                </blockquote>
+                                                <p class="card-text">
+                                                    <span> Topic: </span>
+                                                    <%= lec[i].Topic %>
+                                                </p>
+                                                <p class="card-text">
+                                                    <span> Detailss: </span>
+                                                    <%= lec[i].Details %>
+                                                </p>
+                                                <p class="card-text">
+                                                    <a href="/lecture/student-view/<%= lec[i].L_ID %>">
+                                                        <button type="button" class="btn btn-info">Info</button>
+
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <% }%>
+                                <% }%>
     </div>
 
     <script>

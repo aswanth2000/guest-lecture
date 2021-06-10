@@ -152,6 +152,8 @@ app.get("/student/signup", function(req, res) {
     res.render("student_sign", { errmain: errmain });
 })
 app.get("/student/:id", async function(req, res) {
+    var errmain = error;
+    error = "";
     await sqlConnection.query(`Select * from student where rollno='${req.params.id}'`, async function(err, result) {
         if (err) {
             console.log(err)
@@ -160,7 +162,7 @@ app.get("/student/:id", async function(req, res) {
                 if (err1) {
                     console.log(err1)
                 } else {
-                    res.render("stuhome", { stu: result[0], lec: result1 });
+                    res.render("stuhome", { stu: result[0], lec: result1, errmain: errmain });
 
                 }
             })
@@ -179,13 +181,28 @@ app.get("/student/od/:id", async function(req, res) {
     })
 })
 app.post("/student/od/:id", async function(req, res) {
-    await sqlConnection.query(`Insert into ods set ?`, { rollno: req.body.rollno, LECT: req.body.LECT, class: req.body.class, time: req.body.start + "-" + req.body.end, Status: 0 }, async function(err, results) {
-        if (err) {
-            console.log(err)
+    await sqlConnection.query(`Select * from ods where rollno='${req.body.rollno}' and LECT=${req.body.LECT}`, async function(err1, res1) {
+        if (err1) {
+            console.log(err1)
         } else {
-            res.redirect("/");
+            if (res1.length) {
+                console.log(res1)
+                error = "OD Already Applied"
+                res.redirect("/student/" + req.params.id);
+            } else {
+                await sqlConnection.query(`Insert into ods set ?`, { rollno: req.body.rollno, LECT: req.body.LECT, class: req.body.class, time: req.body.start + "-" + req.body.end, Status: 0 }, async function(err, results) {
+                    if (err) {
+                        console.log(err)
+                    } else {
+                        error = "OD Request Submitted"
+                        res.redirect("/student/" + req.params.id);
+                    }
+                })
+
+            }
         }
     })
+
 });
 app.get("/admin", async function(req, res) {
     await sqlConnection.query(`Select * from lecture where lecture.Status='0' `, async function(err, result) {

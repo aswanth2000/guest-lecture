@@ -38,7 +38,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="/">
                         <i class="fa fa-fw fa-dashboard"></i>
                         <span class="nav-link-text">Schedule Lecture</span>
                     </a>
@@ -61,6 +61,12 @@
                     <a class="nav-link" href="/rooms">
                         <i class="fa fa-fw fa-dashboard"></i>
                         <span class="nav-link-text">Rooms</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <a class="nav-link" id="books">
+                        <i class="fa fa-fw fa-dashboard"></i>
+                        <span class="nav-link-text">Bookings</span>
                     </a>
                 </li>
             </ul>
@@ -258,6 +264,7 @@
         document.getElementById("date").setAttribute("min", today);
         document.getElementById("F_ID").value = user;
         document.getElementById("lec").href = "/lecture/" + user;
+        document.getElementById("books").href = "/bookings/" + localStorage.getItem("user");
     </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>

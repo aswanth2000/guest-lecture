@@ -37,7 +37,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="/">
                         <i class="fa fa-fw fa-dashboard"></i>
                         <span class="nav-link-text">Schedule Lecture</span>
                     </a>
@@ -62,6 +62,12 @@
                         <span class="nav-link-text">Rooms</span>
                     </a>
                 </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <a class="nav-link" id="books">
+                        <i class="fa fa-fw fa-dashboard"></i>
+                        <span class="nav-link-text">Bookings</span>
+                    </a>
+                </li>
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -69,6 +75,7 @@
                         <i class="fa fa-fw fa-sign-out"></i>Logout</a>
                 </li>
             </ul>
+
         </div>
     </nav>
     <div class="content-wrapper">
@@ -168,6 +175,7 @@
     <!-- Logout Modal-->
     <script>
         document.getElementById("lec").href = "/lecture/" + localStorage.getItem("user");
+        document.getElementById("books").href = "/bookings/" + localStorage.getItem("user");
 
         // document.getElementById("F_ID").value = usr;
     </script>

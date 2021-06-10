@@ -751,7 +751,7 @@ app.get("/uploads/:id", async function(req, res) {
 })
 
 app.get("/lecture/volunteer/:id", async function(req, res) {
-    await sqlConnection.query(`Select student.rollno,student.Name,student.email,student.dob,student.gender,class.Class from student,class where student.class=class.C_ID`, async function(err, resutlt) {
+    await sqlConnection.query(`Select student.rollno,student.Name,student.email,student.dob,student.gender,class.Class from student,class where student.class=class.C_ID `, async function(err, resutlt) {
         if (err) {
             console.log(err)
         } else {
@@ -779,7 +779,7 @@ app.post("/lecture/volunteer/:id", async function(req, res) {
             if (err) {
                 console.log(err)
             } else {
-                res.send("Success")
+                res.redirect("/lecture/view/" + req.params.id)
             }
         })
     } else {
@@ -794,7 +794,7 @@ app.post("/lecture/volunteer/:id", async function(req, res) {
             })
 
         }
-        if (fl) res.send("Error");
+        if (fl) res.redirect("/lecture/volunteer/" + req.params.id);
         else res.redirect("/lecture/view/" + req.params.id);
     }
 });

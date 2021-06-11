@@ -287,7 +287,7 @@ app.post("/admin/edit/fac/:id", async function(req, res) {
         if (err) {
             console.log(err)
             error = "Please Check Your Username!" + err.sqlMessage;
-            res.redirect("/signup")
+            res.redirect("/")
         } else {
             res.redirect("/")
 
@@ -307,7 +307,7 @@ app.post("/admin/add/fac", async function(req, res) {
         if (err) {
             console.log(err)
             error = "Please Check Your Username!" + err.sqlMessage;
-            res.redirect("/signup")
+            res.redirect("/")
         } else {
             var mailBody = {
                 from: 'thepeepaltree2000@gmail.com',

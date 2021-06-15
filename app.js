@@ -27,7 +27,7 @@ app.use('/uploads', express.static("uploads"));
 app.set("view engine", "ejs");
 
 var sqlConnection = sql.createConnection({
-    host: "34.136.145.159",
+    host: "35.239.248.79",
     user: "root",
     port: "3306",
     password: "12345678",
